@@ -19,6 +19,9 @@ func main() {
 	ActHiProcinst := g.GenerateModelAs("act_hi_procinst", "ActHiProcinst")
 	g.ApplyBasic(ActHiProcinst)
 
+	ActReProcdef := g.GenerateModelAs("act_re_procdef", "ActReProcdef")
+	g.ApplyBasic(ActReProcdef)
+
 	// Generate the code
 	g.Execute()
 }

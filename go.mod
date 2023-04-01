@@ -5,6 +5,10 @@ go 1.18
 require (
 	github.com/apache/thrift v0.18.1
 	github.com/cloudwego/kitex v0.5.1
+	gorm.io/driver/mysql v1.4.7
+	gorm.io/gen v0.3.21
+	gorm.io/gorm v1.24.6
+	gorm.io/plugin/dbresolver v1.4.1
 )
 
 require (
@@ -14,7 +18,7 @@ require (
 	github.com/cloudwego/fastpb v0.0.4 // indirect
 	github.com/cloudwego/frugal v0.1.6 // indirect
 	github.com/cloudwego/netpoll v0.3.2 // indirect
-	github.com/cloudwego/thriftgo v0.2.8 // indirect
+	github.com/cloudwego/thriftgo v0.2.9 // indirect
 	github.com/go-sql-driver/mysql v1.7.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/pprof v0.0.0-20220608213341-c488b8fa1db3 // indirect
@@ -39,9 +43,5 @@ require (
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	gorm.io/datatypes v1.1.1 // indirect
-	gorm.io/driver/mysql v1.4.7 // indirect
-	gorm.io/gen v0.3.21 // indirect
-	gorm.io/gorm v1.24.6 // indirect
 	gorm.io/hints v1.1.1 // indirect
-	gorm.io/plugin/dbresolver v1.4.1 // indirect
 )

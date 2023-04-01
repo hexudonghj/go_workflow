@@ -30,11 +30,11 @@ func newActHiProcinst(db *gorm.DB, opts ...gen.DOOption) actHiProcinst {
 	_actHiProcinst.ID = field.NewInt64(tableName, "id")
 	_actHiProcinst.ProcInstID = field.NewString(tableName, "proc_inst_id")
 	_actHiProcinst.ProcDefID = field.NewString(tableName, "proc_def_id")
-	_actHiProcinst.ProcDefKey = field.NewString(tableName, "proc_def_key")
-	_actHiProcinst.ProcStartTime = field.NewInt64(tableName, "proc_start_time")
-	_actHiProcinst.ProcEndTime = field.NewInt64(tableName, "proc_end_time")
+	_actHiProcinst.StartTime = field.NewInt64(tableName, "start_time")
+	_actHiProcinst.EndTime = field.NewInt64(tableName, "end_time")
 	_actHiProcinst.StartUserID = field.NewString(tableName, "start_user_id")
 	_actHiProcinst.Status = field.NewString(tableName, "status")
+	_actHiProcinst.TenantID = field.NewString(tableName, "tenant_id")
 	_actHiProcinst.CreateTime = field.NewTime(tableName, "create_time")
 	_actHiProcinst.UpdateTime = field.NewTime(tableName, "update_time")
 
@@ -46,17 +46,17 @@ func newActHiProcinst(db *gorm.DB, opts ...gen.DOOption) actHiProcinst {
 type actHiProcinst struct {
 	actHiProcinstDo actHiProcinstDo
 
-	ALL           field.Asterisk
-	ID            field.Int64  // 自增主键ID
-	ProcInstID    field.String // 流程实例ID
-	ProcDefID     field.String // 流程定义ID
-	ProcDefKey    field.String // 流程定义KEY
-	ProcStartTime field.Int64  // 流程开始时间
-	ProcEndTime   field.Int64  // 流程结束时间（如果流程未结束则为-1）
-	StartUserID   field.String // 流程发起人ID
-	Status        field.String // 流程状态
-	CreateTime    field.Time   // 数据创建时间
-	UpdateTime    field.Time   // 数据更新时间
+	ALL         field.Asterisk
+	ID          field.Int64  // 自增主键ID
+	ProcInstID  field.String // 流程实例ID
+	ProcDefID   field.String // 流程定义ID
+	StartTime   field.Int64  // 流程开始时间
+	EndTime     field.Int64  // 流程结束时间（如果流程未结束则为-1）
+	StartUserID field.String // 流程发起人ID
+	Status      field.String // 流程状态
+	TenantID    field.String
+	CreateTime  field.Time // 数据创建时间
+	UpdateTime  field.Time // 数据更新时间
 
 	fieldMap map[string]field.Expr
 }
@@ -76,11 +76,11 @@ func (a *actHiProcinst) updateTableName(table string) *actHiProcinst {
 	a.ID = field.NewInt64(table, "id")
 	a.ProcInstID = field.NewString(table, "proc_inst_id")
 	a.ProcDefID = field.NewString(table, "proc_def_id")
-	a.ProcDefKey = field.NewString(table, "proc_def_key")
-	a.ProcStartTime = field.NewInt64(table, "proc_start_time")
-	a.ProcEndTime = field.NewInt64(table, "proc_end_time")
+	a.StartTime = field.NewInt64(table, "start_time")
+	a.EndTime = field.NewInt64(table, "end_time")
 	a.StartUserID = field.NewString(table, "start_user_id")
 	a.Status = field.NewString(table, "status")
+	a.TenantID = field.NewString(table, "tenant_id")
 	a.CreateTime = field.NewTime(table, "create_time")
 	a.UpdateTime = field.NewTime(table, "update_time")
 
@@ -111,11 +111,11 @@ func (a *actHiProcinst) fillFieldMap() {
 	a.fieldMap["id"] = a.ID
 	a.fieldMap["proc_inst_id"] = a.ProcInstID
 	a.fieldMap["proc_def_id"] = a.ProcDefID
-	a.fieldMap["proc_def_key"] = a.ProcDefKey
-	a.fieldMap["proc_start_time"] = a.ProcStartTime
-	a.fieldMap["proc_end_time"] = a.ProcEndTime
+	a.fieldMap["start_time"] = a.StartTime
+	a.fieldMap["end_time"] = a.EndTime
 	a.fieldMap["start_user_id"] = a.StartUserID
 	a.fieldMap["status"] = a.Status
+	a.fieldMap["tenant_id"] = a.TenantID
 	a.fieldMap["create_time"] = a.CreateTime
 	a.fieldMap["update_time"] = a.UpdateTime
 }

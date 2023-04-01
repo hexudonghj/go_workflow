@@ -19,6 +19,7 @@ func Use(db *gorm.DB, opts ...gen.DOOption) *Query {
 	return &Query{
 		db:            db,
 		ActHiProcinst: newActHiProcinst(db, opts...),
+		ActReProcdef:  newActReProcdef(db, opts...),
 	}
 }
 
@@ -26,6 +27,7 @@ type Query struct {
 	db *gorm.DB
 
 	ActHiProcinst actHiProcinst
+	ActReProcdef  actReProcdef
 }
 
 func (q *Query) Available() bool { return q.db != nil }
@@ -34,6 +36,7 @@ func (q *Query) clone(db *gorm.DB) *Query {
 	return &Query{
 		db:            db,
 		ActHiProcinst: q.ActHiProcinst.clone(db),
+		ActReProcdef:  q.ActReProcdef.clone(db),
 	}
 }
 
@@ -49,16 +52,19 @@ func (q *Query) ReplaceDB(db *gorm.DB) *Query {
 	return &Query{
 		db:            db,
 		ActHiProcinst: q.ActHiProcinst.replaceDB(db),
+		ActReProcdef:  q.ActReProcdef.replaceDB(db),
 	}
 }
 
 type queryCtx struct {
 	ActHiProcinst *actHiProcinstDo
+	ActReProcdef  *actReProcdefDo
 }
 
 func (q *Query) WithContext(ctx context.Context) *queryCtx {
 	return &queryCtx{
 		ActHiProcinst: q.ActHiProcinst.WithContext(ctx),
+		ActReProcdef:  q.ActReProcdef.WithContext(ctx),
 	}
 }
 
